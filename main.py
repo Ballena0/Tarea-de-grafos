@@ -1,30 +1,42 @@
 class Datos:
-    def __init__(self, Vertice, Arista, Peso):
+    def __init__(self, Vertice, Arista, Peso, Vertices):
         self.Vertice = Vertice
         self.Arista = Arista
         self.Peso = Peso
+        self.Vertices = Vertices
     def show(self):
-        print(' Vertice = ',self.Vertice,'\n Arista = ',self.Arista,'\n Peso = ',self.Peso)
+        print(' Valores',' \n Vertices = ',self.Vertice, '\n Nombres = ',self.Vertices,'\n Aristas = ',self.Arista,'\n Peso = ',self.Peso)
+
 
 def IngresoDatos():
     print ('Ingrese los siguientes valores por pantalla')
     v=0
+    vN= []
     a=0
-    p=0
-    while (v==0 or a==0 or p==0):
+    p=[]
+    while (a==0):
         try:
             v = int(input('Vertices: '))
+            for i in range(0, v):
+                vN.append(str(input("Nombre vertice: ")))
             a = int(input('Aristas: '))
-            p = int(input('Peso: '))
+            for i in range(0, a):
+                p.append(int(input("Peso arista: ")))
             break
         except ValueError: 
             print('Datos mal ingresados, intente nuevamente.......')
-    DatosNuevos = Datos(v,a,p)
-    return DatosNuevos
-def 
+    DatosNuevos = Datos(v,a,p, vN)
+    return DatosNuevos.show()
+
+#def sonAdyacentes(Datos):
+#falta confirmar adyacencia
+
+
+
+
 def main ():
     datosNuevos = IngresoDatos()
-    
-    return 0
-
+    ##return datosNuevos.show()
+    ##Se esta retornando desde la funcion "IngresoDatos"
+    #sonAdyacentes(datosNuevos)
 main()
