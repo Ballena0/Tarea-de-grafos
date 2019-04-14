@@ -28,7 +28,8 @@ def IngresoDatos():
     DatosNuevos = Datos(v,a,p, vN)
     return DatosNuevos.show()
 
-#def sonAdyacentes(Datos):
+def sonAdyacentes(Datos):
+    pass
 #falta confirmar adyacencia
 
 
@@ -38,5 +39,5 @@ def main ():
     datosNuevos = IngresoDatos()
     ##return datosNuevos.show()
     ##Se esta retornando desde la funcion "IngresoDatos"
-    #sonAdyacentes(datosNuevos)
+    sonAdyacentes(datosNuevos)
 main()
