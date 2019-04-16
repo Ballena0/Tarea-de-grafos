@@ -5,7 +5,8 @@ class Datos:
         self.Peso = Peso
         self.Vertices = Vertices
     def show(self):
-        print(' Valores',' \n Vertices = ',self.Vertice, '\n Nombres = ',self.Vertices,'\n Aristas = ',self.Arista,'\n Peso = ',self.Peso)
+        print(' Valores',' \n Vertices = ',self.Vertice, '\n Nombres = '
+            ,self.Vertices,'\n Aristas = ',self.Arista,'\n Peso = ',self.Peso)
 
 
 def IngresoDatos():
@@ -27,6 +28,8 @@ def IngresoDatos():
             print('Datos mal ingresados, intente nuevamente.......')
     DatosNuevos = Datos(v,a,p, vN)
     return DatosNuevos.show()
+
+
 
 def sonAdyacentes(Datos):
     pass
