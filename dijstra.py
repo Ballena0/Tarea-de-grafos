@@ -6,7 +6,7 @@ class Vertice:
         self.id = nodo
         self.adyacente = {}
         #setear peso al infito
-        self.distancia = sys.maxint
+        self.distancia = sys.maxsize
         #recorrido?
         self.recorrido = False
         #predecesor
@@ -49,10 +49,10 @@ class Vertice:
         return str(self.id) + 'Adyacente a : ' + str([x.id for x in self.adyacente])
 
 class Grafo:
-    def __init__(self):
+    def __init__(self,num_ver,dicc_vertices):  ## modifique esto para ingresar los datos en el constructor del grafo, modificalo si quieres
         self.dicc_vertices = {}
-        self.num_vertices = 0
-
+        self.num_vertices = num_ver
+        self.Matriz = [] # Matriz de adyacencia del grafo 
     #iterador con un objeto de tipo "Vertice"
     def __iter__(self):
         return iter(self.dicc_vertices.values())
@@ -93,7 +93,12 @@ class Grafo:
 
     def get_predecesor(self):
         return self.predecesor
-    
+    def set_matriz(self):  # Crea la matriz de adyacencia llena de ceros, dada la cantidad de vertices
+        for i in range(self.num_vertices):
+            self.Matriz.append([0]*self.num_vertices)
+    def mostrar_matriz(self): # Muestra por pantalla la matriz
+         for i in range(self.num_vertices):
+             print(self.Matriz[i-1])
 def elmascorto(v, camino):
     ''' hace el camino mas corto desde v.predecesor'''
     if v.predecesor:
