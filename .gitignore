@@ -1,3 +1,4 @@
 #Carpetas a ignorar
 
 \.vscode/
+.\dijstra.py/
