@@ -3,7 +3,7 @@ from grafo import creaGrafo
 
 def main():
 
-    (aristas_grafo,vertices) = creaGrafo()
-    menu(aristas_grafo,vertices)
+    (aristas_grafo,vertices,tipo_grafo) = creaGrafo()
+    menu(aristas_grafo,vertices,tipo_grafo)
     
 main()
