@@ -1,6 +1,6 @@
 from matriz import matriz_ady
 from tools import Limpiar 
-from grafo import Grafo_conexo,Cantidad_caminos
+from grafo import Grafo_conexo,Cantidad_caminos,disktra
 import msvcrt
 
 def menu (aristas_grafo,vertices,tipo_grafo):
@@ -10,6 +10,8 @@ def menu (aristas_grafo,vertices,tipo_grafo):
     
     while (not salir):
         Limpiar()
+        for i in aristas_grafo:
+            print(i.__dict__)
         print('Tarea 1 de Grafos y lenguajes formales')
         print('\tMenu principal')
         print('\t 1) Mostrar matriz de adyacencia') 
@@ -50,7 +52,7 @@ def menu (aristas_grafo,vertices,tipo_grafo):
             print("\nPresione una tecla para continuar...")
             msvcrt.getch()
         elif (opcion==4):
-            pass
+            disktra('a','b',aristas_grafo,vertices,tipo_grafo)
             print("\nPresione una tecla para continuar...")
             msvcrt.getch()
         elif (opcion==5):

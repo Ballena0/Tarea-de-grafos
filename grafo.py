@@ -6,6 +6,12 @@ class Arista:
     vertice_inicial = ""
     vertice_final = ""
 
+class Vertice:
+    def __init__(self,vertice,ady):
+        self.v = vertice
+        self.ady = ady
+
+
 def creaGrafo():
 
     while(True):
@@ -79,12 +85,9 @@ def creaGrafo():
                         print('Datos mal ingresados, intente nuevamente.......')
                 break
         except ValueError:
-            print('Datos mal ingresados, intente nuevamente.......')
-
-
-            
+            print('Datos mal ingresados, intente nuevamente.......') 
     Limpiar()
-    print("Nombre de vertices crados:\n\n")
+    print("Nombre de vertices creados:\n\n")
     for i in range(0,len(vertices)):
         print("Vertice: "+str(vertices[i]))
     print("\nProceso de creacion del grafo finalizado, presione una tecla para continuar...")
@@ -191,3 +194,101 @@ def Cantidad_caminos(aristas_grafo,vertices,tipo_grafo,largo): #################
             caminos=caminos+matriz_aux2[a][b]   
     return caminos
               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def disktra(vertice_i,vertice_f,aristas_grafo,vertices,tipo_grafo):
+
+    grafo = {}
+    verticesn = []
+    contador=0
+    for i in aristas_grafo:   #aqui mi inutil intento
+        ady = {}
+        obj = {}
+        for k in range(0,len(verticesn)):
+            if (not(i.vertice_inicial in verticesn[k].v)):
+                print('que ta pasando boludo')
+                obj[i.vertice_final] = i.peso
+        for j in aristas_grafo:
+            if(i.vertice_inicial==j.vertice_inicial):
+                obj[j.vertice_final] = j.peso
+        ady[i.vertice_inicial] = obj
+        verticesn.insert(0,Vertice(i.vertice_inicial,ady))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # for i in range (0,(len(aristas_grafo))-1):
+    #     adyacente = []
+    #     if(not (aristas_grafo[i].vertice_inicial in verticesn):
+    #         # obj = {
+    #         #     'peso' : aristas_grafo[i].peso,
+    #         #     'vertice': aristas_grafo[i].vertice_final
+    #         # }
+    #         obj = {
+    #             aristas_grafo[i].vertice_final : aristas_grafo[i].peso
+    #         }
+    #         adyacente.append(obj)
+    #     for j in range(0,(len(aristas_grafo))-1):
+
+    #         if (aristas_grafo[i].vertice_inicial == aristas_grafo[j].vertice_inicial):
+    #             obj = {
+    #                 aristas_grafo[i].vertice_final : aristas_grafo[i].peso
+    #             }
+    #             # obj = {
+    #             #     'peso': aristas_grafo[j].peso,
+    #             #     'vertice' : aristas_grafo[j].vertice_final
+    #             # }
+    #             adyacente.append(obj)
+        
+    #     verticesn.insert(0,Vertice(aristas_grafo[i].vertice_inicial,adyacente))
+        # verticesn[i] = Vertice(aristas_grafo[i].vertice_inicial,adyacente)
+    for e in verticesn:
+        print(len(verticesn))
+        print(e.ady)
