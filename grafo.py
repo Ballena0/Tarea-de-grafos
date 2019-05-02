@@ -1,4 +1,5 @@
 from tools import Limpiar
+from dijkstra import dijkstra
 import msvcrt
 
 class Arista:
@@ -216,54 +217,31 @@ def Cantidad_caminos(aristas_grafo,vertices,tipo_grafo,largo): #################
 def disktra(vertice_i,vertice_f,aristas_grafo,vertices,tipo_grafo):
 
     grafo = {}
-    verticesn = []
+    verticesn = {}
     contador=0
     for i in aristas_grafo:   #aqui mi inutil intento
         ady = {}
         obj = {}
         for k in range(0,len(verticesn)):
-            if (not(i.vertice_inicial in verticesn[k].v)):
-                print('que ta pasando boludo')
+            if (not(i.vertice_inicial in verticesn.keys())): ## no está en el wea 
+                print("no esta")
                 obj[i.vertice_final] = i.peso
+            else:
+                 print("si esta")
         for j in aristas_grafo:
-            if(i.vertice_inicial==j.vertice_inicial):
-                obj[j.vertice_final] = j.peso
+             if(i.vertice_inicial==j.vertice_inicial):
+                 obj[j.vertice_final] = j.peso
         ady[i.vertice_inicial] = obj
-        verticesn.insert(0,Vertice(i.vertice_inicial,ady))
+        verticesn[i.vertice_inicial] = obj
+    for i in range(0,len(verticesn)):
+        ady = {}
+        obj = {}
+        if (not (aristas_grafo[i].vertice_final in verticesn.keys())):
+            # ady[aristas_grafo[i].vertice_final] = {}
+            verticesn[aristas_grafo[i].vertice_final] = {}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    print(verticesn)
+    dijkstra(verticesn,vertice_i,vertice_f)
     # for i in range (0,(len(aristas_grafo))-1):
     #     adyacente = []
     #     if(not (aristas_grafo[i].vertice_inicial in verticesn):
@@ -289,6 +267,6 @@ def disktra(vertice_i,vertice_f,aristas_grafo,vertices,tipo_grafo):
         
     #     verticesn.insert(0,Vertice(aristas_grafo[i].vertice_inicial,adyacente))
         # verticesn[i] = Vertice(aristas_grafo[i].vertice_inicial,adyacente)
-    for e in verticesn:
-        print(len(verticesn))
-        print(e.ady)
+    # for e in verticesn:
+    #     print(len(verticesn))
+    #     print(e)

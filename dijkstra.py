@@ -1,25 +1,4 @@
-graph = {
-        'a':{
-            'b':10,
-            'c':3
-        },
-        'b':{
-            'c':1,
-            'd':2
-        },
-        'c':{
-            'b':4,
-            'd':8,
-            'e':2
-        },
-        'd':{
-            'e':7
-        },
-        'e':{
-            'd':9
-        }
-}
-    
+
 def dijkstra(graph,vertice_i,vertice_f):    
     dist_corta = {}
     predecesor = {}
@@ -48,10 +27,9 @@ def dijkstra(graph,vertice_i,vertice_f):
             path.insert(0,Vact)
             Vact = predecesor[Vact]
         except KeyError:
-            print ('Ruta no accesible')
+            print ('La ruta no es posible')
             break
     path.insert(0,vertice_i)
     if (dist_corta[vertice_f]!=infinity):
         print('La distancia mas corta es ' + str(dist_corta[vertice_f]))
         print('Y la ruta es ' + str(path))
-dijkstra(graph,'e','a')
