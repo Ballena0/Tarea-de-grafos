@@ -57,17 +57,24 @@ def menu (aristas_grafo,vertices,tipo_grafo):
                 vdijkstra=True
                 while(vdijkstra):
                     try:
+                        contador=0
                         v_i = str(input('\n Ingrese el vertice inicial: '))
                         v_f = str(input('\n Ingrese el vertice final: '))
                         if ((v_i not in vertices) or (v_f not in vertices)):
-                            print('Ingrese algún vertice existente')
+                            print('Ingrese algún vertice existente')    
                         else:
-                            break
-                        # for i in aristas_grafo:
-                        #     if (not(v_i in i.vertice_inicial)):
-                        #         vdijkstra=False
-                        #     elif (not(v_f in i.vertice_final)):
-                        #         vdijkstra=False
+                            for i in aristas_grafo:
+                                if (v_i==i.vertice_inicial):
+                                    contador+=1
+                                if (v_f==i.vertice_final):
+                                    contador+=1
+                            if (contador<=1):
+                                print('Uno de los vertices se encuentra aislado o no es posible realizar la ruta, por ende no es posible realizar dijkstra')
+                                print("\nPresione una tecla para continuar...")
+                                msvcrt.getch()
+                                break
+                            else:
+                                break
                     except:
                         ValueError: print('Datos mal ingresados, intente nuevamente.......')
                 disktra(v_i,v_f,aristas_grafo,vertices,tipo_grafo)

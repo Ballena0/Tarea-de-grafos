@@ -12,7 +12,6 @@ class Vertice:
         self.v = vertice
         self.ady = ady
 
-
 def creaGrafo():
 
     while(True):
@@ -23,9 +22,20 @@ def creaGrafo():
             aristas_grafo = [Arista() for i in range(num_aristas)]
             if (tipo_grafo==1 or tipo_grafo==2):
                 for i in range(0, num_aristas):
-                    aristas_grafo[i].peso=int(input("\tPeso de arista " + str(i+1) +": "))
-                    aristas_grafo[i].vertice_inicial=str(input("\tVertice inicial arista " + str(i+1) +": "))
-                    aristas_grafo[i].vertice_final=str(input("\tVertice final arista " + str(i+1) +": "))
+                    try:
+                        aristas_grafo[i].peso=int(input("\tPeso de arista " + str(i+1) +": "))
+                        aristas_grafo[i].vertice_inicial=str(input("\tVertice inicial arista " + str(i+1) +": "))
+                        aristas_grafo[i].vertice_final=str(input("\tVertice final arista " + str(i+1) +": "))
+                    except: 
+                        print("Ingrese un valor correcto, porfavor")
+                        while(True):
+                            try:
+                                aristas_grafo[i].peso=int(input("\tPeso de arista " + str(i+1) +": "))
+                                aristas_grafo[i].vertice_inicial=str(input("\tVertice inicial arista " + str(i+1) +": "))
+                                aristas_grafo[i].vertice_final=str(input("\tVertice final arista " + str(i+1) +": "))
+                                break
+                            except:
+                                print("Ingrese un valor correcto, porfavor")     
                 break
             else:
                 print('Datos de TIPO DE GRAFO mal ingresados, intente nuevamente.......')
@@ -95,7 +105,7 @@ def creaGrafo():
     msvcrt.getch()
     return (aristas_grafo,vertices,tipo_grafo)
 
-def Grafo_conexo(aristas_grafo,vertices,tipo_grafo): ########################################## FUNCION NUEVA
+def Grafo_conexo(aristas_grafo,vertices,tipo_grafo): 
     if(len(aristas_grafo)==0):
         return 0
     matriz = [[0 for i in range(0,len(vertices))] for j in range(0,len(vertices))]
@@ -194,40 +204,17 @@ def Cantidad_caminos(aristas_grafo,vertices,tipo_grafo,largo): #################
         for b in range(0,len(vertices)):
             caminos=caminos+matriz_aux2[a][b]   
     return caminos
-              
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 def disktra(vertice_i,vertice_f,aristas_grafo,vertices,tipo_grafo):
 
     grafo = {}
     verticesn = {}
-    contador=0
     for i in aristas_grafo:   #aqui mi inutil intento
         ady = {}
         obj = {}
         for k in range(0,len(verticesn)):
             if (not(i.vertice_inicial in verticesn.keys())): ## no está en el wea 
-                print("no esta")
                 obj[i.vertice_final] = i.peso
-            else:
-                 print("si esta")
         for j in aristas_grafo:
              if(i.vertice_inicial==j.vertice_inicial):
                  obj[j.vertice_final] = j.peso
@@ -237,36 +224,6 @@ def disktra(vertice_i,vertice_f,aristas_grafo,vertices,tipo_grafo):
         ady = {}
         obj = {}
         if (not (aristas_grafo[i].vertice_final in verticesn.keys())):
-            # ady[aristas_grafo[i].vertice_final] = {}
             verticesn[aristas_grafo[i].vertice_final] = {}
 
-    print(verticesn)
     dijkstra(verticesn,vertice_i,vertice_f)
-    # for i in range (0,(len(aristas_grafo))-1):
-    #     adyacente = []
-    #     if(not (aristas_grafo[i].vertice_inicial in verticesn):
-    #         # obj = {
-    #         #     'peso' : aristas_grafo[i].peso,
-    #         #     'vertice': aristas_grafo[i].vertice_final
-    #         # }
-    #         obj = {
-    #             aristas_grafo[i].vertice_final : aristas_grafo[i].peso
-    #         }
-    #         adyacente.append(obj)
-    #     for j in range(0,(len(aristas_grafo))-1):
-
-    #         if (aristas_grafo[i].vertice_inicial == aristas_grafo[j].vertice_inicial):
-    #             obj = {
-    #                 aristas_grafo[i].vertice_final : aristas_grafo[i].peso
-    #             }
-    #             # obj = {
-    #             #     'peso': aristas_grafo[j].peso,
-    #             #     'vertice' : aristas_grafo[j].vertice_final
-    #             # }
-    #             adyacente.append(obj)
-        
-    #     verticesn.insert(0,Vertice(aristas_grafo[i].vertice_inicial,adyacente))
-        # verticesn[i] = Vertice(aristas_grafo[i].vertice_inicial,adyacente)
-    # for e in verticesn:
-    #     print(len(verticesn))
-    #     print(e)
